@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Table</title>
+    <style>
+        table {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="userInput" placeholder="Enter data">
+    <button onclick="addData()">Submit</button>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Table rows will be added dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        function addData() {
+            const inputElement = document.getElementById('userInput');
+            const inputValue = inputElement.value;
+
+            if (inputValue.trim() !== '') {
+                const tableBody = document.getElementById('tableBody');
+                const newRow = document.createElement('tr');
+                const newDataCell = document.createElement('td');
+                newDataCell.textContent = inputValue;
+                newRow.appendChild(newDataCell);
+                tableBody.appendChild(newRow);
+
+                // Clear input field after adding data
+                inputElement.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
